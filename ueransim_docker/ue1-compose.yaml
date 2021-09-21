@@ -1,0 +1,32 @@
+version: '3'
+#networks:
+#  open5gsnetwork:
+#    ipam:
+#      config:
+#        - subnet: 192.168.0.0/24
+services:
+  ue1:
+    image: ping2balaji/ueransim_docker:v1
+    container_name: balajiue2
+    network_mode: "host"
+    command: 
+      - ue
+    cap_add:
+      - all
+    privileged: true
+    environment:
+      #GNB_HOSTNAME: gnb1
+      MCC: '315'
+      MNC: '010'
+      #MSISDN: '000000048'
+      IMSI: 315010000000048
+      KEY: '4eb87aaeba7c8d2a0427ebc14c8bf9c7'
+      OP: 'c9ee45eb448c33e6a512ac9de8f7ec7e'
+      OP_TYPE: 'OP'
+      GNB_ADDR: 10.0.4.225
+      APN: 'internet'
+      SST: '0x01'
+      SD: '0x19CDE1'
+#    networks:
+#      open5gsnetwork:
+#        ipv4_address: 192.168.0.171

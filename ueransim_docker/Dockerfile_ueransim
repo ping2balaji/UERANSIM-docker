@@ -1,0 +1,72 @@
+FROM ubuntu:20.04
+
+ARG version=v3.2.3
+
+ENV VERSION=$version
+
+#RUN apt-get update && \
+#    apt-get install -y  \
+
+RUN apt-get update
+
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
+
+RUN apt-get install -y \
+    git \
+    make \
+    wget \
+    g++ \
+    libssl-dev \
+    libsctp-dev \
+    lksctp-tools \
+    iproute2 \
+    host \
+    iputils-ping \
+    iputils-tracepath \
+    libsctp-dev 
+
+
+RUN apt-get install -y gettext-base
+RUN apt install -y python3-pip
+RUN pip3 install speedtest-cli
+
+# requires cmake >=3.17
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3.tar.gz && \
+    tar -zxvf cmake-3.17.3.tar.gz && \
+    cd cmake-3.17.3 && \
+    ./bootstrap && \
+    make && \
+    make install
+
+#RUN cd /tmp && git clone https://github.com/aligungr/UERANSIM.git && \
+#    cd UERANSIM && git checkout tags/$VERSION 
+
+RUN cd /tmp && git clone https://github.com/aligungr/UERANSIM.git
+RUN cd /tmp/UERANSIM && git reset --hard 673c48c
+
+RUN cd /tmp/UERANSIM && echo "cmake --version" && make
+
+RUN cp /tmp/UERANSIM/build/* /usr/local/bin/
+
+
+COPY /etc/ueransim /etc/ueransim
+COPY entrypoint.sh /entrypoint.sh
+
+ENV ENB_ID=0x19B \
+    MCC=001 \
+    MNC=01 \
+    NETWORK=openverso.org \
+    TAC=0001 \
+    MSISDN=0000000001 \
+    KEY=465B5CE8B199B49FAA5F0A2EE238A6BC \
+    OP_TYPE=OPC \
+    OP=E8ED289DEBA952E4283B54E88E6183CA \
+    SST=1 \
+    SD=1 \
+    UE_HOSTNAME=ue \
+    GNB_HOSTNAME=gnb \
+    AMF_HOSTNAME=amf \
+    APN=internet
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/bin/sh"]
