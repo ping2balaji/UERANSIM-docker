@@ -42,7 +42,7 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3
 #    cd UERANSIM && git checkout tags/$VERSION 
 
 RUN cd /tmp && git clone https://github.com/aligungr/UERANSIM.git
-RUN cd /tmp/UERANSIM && git reset --hard 673c48c
+#RUN cd /tmp/UERANSIM && git reset --hard 673c48c
 
 RUN cd /tmp/UERANSIM && echo "cmake --version" && make
 
