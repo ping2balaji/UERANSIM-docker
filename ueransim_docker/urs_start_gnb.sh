@@ -4,8 +4,10 @@
 # $2 : MNC
 # $3 : LOCAL_BIND_IP
 # $4 : REMOTE_AMF_IP
+# $5 : NCI
 sed -i "s/MCC: '.*'/MCC: '$1'/g" gnb1-compose.yaml
 sed -i "s/MNC: '.*'/MNC: '$2'/g" gnb1-compose.yaml
 sed -i "s/GNB_ADDR: .*/GNB_ADDR: $3/g" gnb1-compose.yaml
 sed -i "s/AMF_ADDR: .*/AMF_ADDR: $4/g" gnb1-compose.yaml
+sed -i "s/NCI: .*/NCI: '$5'/g" gnb1-compose.yaml
 docker-compose -f gnb1-compose.yaml up gnb1

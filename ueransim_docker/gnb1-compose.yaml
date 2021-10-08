@@ -16,6 +16,7 @@ services:
       GNB_HOSTNAME: gnb1
       MCC: '315'
       MNC: '010'
+      NCI: '0x000000010'
       TAC: 12345
       GNB_ADDR: 10.0.4.225
       AMF_ADDR: 10.0.4.202
