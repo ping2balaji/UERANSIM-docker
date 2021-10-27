@@ -44,22 +44,18 @@ sessions:
     apn: ${APN}
     slice:
       sst: ${SST}
-      sd: ${SD}
     emergency: false
 
 # List of requested S-NSSAIs by this 
 slices:
   - sst: ${SST}
-    sd: ${SD}
 # Configured NSSAI for this UE by HPLMN
 configured-nssai:
   - sst: ${SST}
-    sd: ${SD}
 
 # Default Configured NSSAI for this UE
 default-nssai:
   - sst: ${SST}
-    sd: ${SD}
 
 # Supported encryption algorithms by this UE
 integrity:

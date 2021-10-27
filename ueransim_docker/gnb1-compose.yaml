@@ -6,7 +6,7 @@ version: '3'
 #        - subnet: 192.168.0.0/24
 services:
   gnb1:
-    image: ping2balaji/ueransim_docker:v1
+    image: ping2balaji/ueransim_h9:12
     container_name: gnb1
     network_mode: "host"
     command: 

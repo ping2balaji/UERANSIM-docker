@@ -7,12 +7,14 @@
 # $5 : Key
 # $6 : IMSI
 # $7 : GNB_IP
-sed -i "s/container_name: .*/container_name: $1/g" ue1-compose.yaml
-sed -i "s/MCC: '.*'/MCC: '$2'/g" ue1-compose.yaml
-sed -i "s/MNC: '.*'/MNC: '$3'/g" ue1-compose.yaml
-sed -i "s/OP: '.*'/OP: '$4'/g" ue1-compose.yaml
-sed -i "s/KEY: '.*'/KEY: '$5'/g" ue1-compose.yaml
-sed -i "s/IMSI: .*/IMSI: $6/g" ue1-compose.yaml
-sed -i "s/GNB_ADDR: .*/GNB_ADDR: $7/g" ue1-compose.yaml
-cat ue1-compose.yaml
-docker-compose -f ue1-compose.yaml up ue1
+cp /root/ue1-compose.yaml /root/$1.yaml
+sed -i "s/ue1:/$1:/g" /root/$1.yaml
+sed -i "s/container_name: .*/container_name: $1/g" /root/$1.yaml
+sed -i "s/MCC: '.*'/MCC: '$2'/g" /root/$1.yaml
+sed -i "s/MNC: '.*'/MNC: '$3'/g" /root/$1.yaml
+sed -i "s/OP: '.*'/OP: '$4'/g" /root/$1.yaml
+sed -i "s/KEY: '.*'/KEY: '$5'/g" /root/$1.yaml
+sed -i "s/IMSI: .*/IMSI: $6/g" /root/$1.yaml
+sed -i "s/GNB_ADDR: .*/GNB_ADDR: $7/g" /root/$1.yaml
+cat /root/$1.yaml
+docker-compose -f /root/$1.yaml up $1
