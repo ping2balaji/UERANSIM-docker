@@ -14,7 +14,7 @@ sed -i "s/MCC: '.*'/MCC: '$2'/g" /root/$1.yaml
 sed -i "s/MNC: '.*'/MNC: '$3'/g" /root/$1.yaml
 sed -i "s/OP: '.*'/OP: '$4'/g" /root/$1.yaml
 sed -i "s/KEY: '.*'/KEY: '$5'/g" /root/$1.yaml
-sed -i "s/IMSI: .*/IMSI: $6/g" /root/$1.yaml
+sed -i "s/IMSI: .*/IMSI: '$6'/g" /root/$1.yaml
 sed -i "s/GNB_ADDR: .*/GNB_ADDR: $7/g" /root/$1.yaml
 cat /root/$1.yaml
 docker-compose -f /root/$1.yaml up $1
