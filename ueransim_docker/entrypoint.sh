@@ -34,7 +34,8 @@ ue)  echo "Launching ue: nr-ue -c ue.yaml"
     echo "Updated ue.yaml:"
     cat ue.yaml
     echo "Running UE..."
-    nr-ue -c ue.yaml --no-routing-config
+    #nr-ue -c ue.yaml --no-routing-config
+    nr-ue -c ue.yaml
     ;;
 gnb)  echo "Launching gnb: nr-gnb -c gnb.yaml"
     #if [[ ! -z "${UE_HOSTNAME}" ]] ; then

@@ -49,7 +49,7 @@ RUN cd /tmp/UERANSIM && echo "cmake --version" && make
 RUN cp /tmp/UERANSIM/build/* /usr/local/bin/
 
 
-COPY /etc/ueransim /etc/ueransim
+COPY etc/ueransim /etc/ueransim
 COPY entrypoint.sh /entrypoint.sh
 
 ENV ENB_ID=0x19B \
