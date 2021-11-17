@@ -8,7 +8,7 @@ tac: ${TAC}           # Tracking Area Code
 
 linkIp: ${GNB_ADDR}   # gNB's local IP address for Radio Link Simulation (Usually same with local IP)
 ngapIp: ${GNB_ADDR}   # gNB's local IP address for N2 Interface (Usually same with local IP)
-gtpIp: ${GNB_ADDR}    # gNB's local IP address for N3 Interface (Usually same with local IP)
+gtpIp: ${GTPU_ADDR}    # gNB's local IP address for N3 Interface (Usually same with local IP)
 
 # List of AMF address information
 amfConfigs:

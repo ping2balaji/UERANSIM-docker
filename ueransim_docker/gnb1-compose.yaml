@@ -20,6 +20,7 @@ services:
       TAC: 12345
       GNB_ADDR: 10.0.4.225
       AMF_ADDR: 10.0.4.202
+      GTPU_ADDR: 10.0.4.250
       SST: 0x01
       SD: 0x19CDE1
 #    networks:
